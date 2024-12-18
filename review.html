@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Review</title>
+    <link rel="stylesheet" href="review.css">
+    <link href="https://fonts.googleapis.com/css?family=Aclonica" rel=stylesheet> 
+    <style> body, h1, button {
+        font-family: Aclonica;
+        } </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="review.html"></a>
+    </nav>
+
+    <!-- Page Title -->
+    <h1>Customer Review</h1>
+
+    <!-- Review Form -->
+     <div class="container">
+    <form class="review-form" action="submit_review.php" method="POST">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" required>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" required>
+
+        <label for="suggestion">Suggestion</label>
+        <textarea id="suggestion" name="suggestion" rows="4" required></textarea>
+
+        <label>Rating</label>
+        <div class="rating" id="rating">
+            <span data-value="1">&#9733;</span>
+            <span data-value="2">&#9733;</span>
+            <span data-value="3">&#9733;</span>
+            <span data-value="4">&#9733;</span>
+            <span data-value="5">&#9733;</span>
+        </div>
+        <input type="hidden" id="rating-value" name="rating" required>
+
+        <button type="submit">Submit Review</button>
+    </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Lustra | All Rights Reserved</p>
+    </footer>
+
+    <!-- JavaScript for Star Rating -->
+    <script>
+        const stars = document.querySelectorAll('.rating span');
+        const ratingValue = document.getElementById('rating-value');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const value = star.getAttribute('data-value');
+                ratingValue.value = value;
+
+                stars.forEach(s => s.style.color = 'gray'); // Reset all stars
+                for (let i = 0; i < value; i++) {
+                    stars[i].style.color = 'gold'; // Color selected stars
+                }
+            });
+        });
+    </script>
+    <script>
+        const input = document.getElementById('name','gender','email','password','country','suggestion');
+    
+        
+       
+// Change background color on click
+input.addEventListener('click', () => {
+    input.style.backgroundColor = '#d5bc94'; // Light brown color
+});
+
+// Revert to white when focus is lost
+input.addEventListener('blur', () => {
+    input.style.backgroundColor = 'white'; // Back to white
+});
+</script>
+</body>
+</html>
